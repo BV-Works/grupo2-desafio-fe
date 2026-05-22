@@ -1,13 +1,16 @@
-import { useState } from "react"; 
+import { useState, useContext } from "react"; 
 import { useNavigate } from "react-router-dom"; 
 
+import { AuthContext } from "../../context/authContext"
+import { validateEmail, validatePassword } from "../../utils/regex";
 import styles from "./LoginPage.module.css"; 
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 
 export default function LoginPage () {
     const navigate = useNavigate(); 
+    const { login } = useContext(AuthContext); 
 
-    const [ formData, setFormData ] = useState({ mail: "", pass: "" }); 
+    const [ formData, setFormData ] = useState({ email: "", password: "" }); 
 
     const [ error, setError ] = useState(""); 
 
@@ -18,15 +21,23 @@ export default function LoginPage () {
         }); 
     }; 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault(); 
         
         setError(""); 
 
-        if (formData.mail === "john@doe.com" && formData.pass === "1234") {
-            navigate("/dashboard"); 
+        if (!validateEmail(formData.email) || !validatePassword(formData.password)) {
+            setError("Formato de email o password inválido"); 
         }
-        setError("Login failed"); 
+
+        try {
+            await login(formData); 
+
+            navigate("/dashboard"); 
+
+        } catch (err) {
+            setError( err.message || "Login failed"); 
+        }
 
     }; 
     return (
@@ -35,24 +46,24 @@ export default function LoginPage () {
             <h1>Login</h1>
                 <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="mail">Email: </label>
+                    <label htmlFor="email">Email: </label>
                     <input type="email"
-                        name="mail"
-                        id="mail"
+                        name="email"
+                        id="email"
                         placeholder="Email"
-                        value={formData.mail}
+                        value={formData.email}
                         onChange={handleChange} 
                 />
 
                 </div>
 
                 <div>
-                    <label htmlFor="pass">Password: </label>
+                    <label htmlFor="password">Password: </label>
                     <input type="password"
-                        name="pass"
-                        id="pass"
+                        name="password"
+                        id="password"
                         placeholder="Password"
-                        value={formData.pass} 
+                        value={formData.password} 
                         onChange={handleChange}
                     />
                 </div>
@@ -66,4 +77,4 @@ export default function LoginPage () {
         </main>
         </AuthLayout>
     ); 
-}
+}; 
