@@ -1,0 +1,78 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Allow percentage-based heights in the application */
+html, body {
+  height: 100%;
+}
+
+/* 4. Improve media defaults and remove borders */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 6. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 7. Remove default list styles */
+ol, ul {
+  list-style: none;
+}
+
+/* 8. Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 9. Improve text rendering */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh; 
+}
+
+main {
+  flex: 1;
+}
+
+:root {
+  /* Brand & Primary Colors */
+  --color-primary-dark: #0f172a;   /* Deep Navy: Main background / Sidebar */
+  --color-primary: #1e3a8a;        /* Royal Blue: Primary buttons / Headers */
+  --color-primary-light: #3b82f6;  /* Slate Blue: Links / Active states */
+  
+  /* Neutral Grays (Backgrounds & Borders) */
+  --color-bg-main: #f8fafc;        /* Off-White: App body background */
+  --color-bg-card: #ffffff;        /* Pure White: Dashboard widgets / Cards */
+  --color-border: #e2e8f0;         /* Light Gray: Subtle dividers / Grid lines */
+  --color-border-dark: #cbd5e1;    /* Medium Gray: Input borders / Focus states */
+
+  /* Typography (High Contrast) */
+  --color-text-main: #1e293b;      /* Charcoal: Main body text / Headings */
+  --color-text-muted: #64748b;     /* Steel Gray: Tooltips / Table headers */
+
+  /* Semantic Alerts (Crucial for Fraud) */
+  --color-status-critical: #dc2626; /* Crimson Red: High fraud risk / Blocked */
+  --color-status-warning: #d97706;  /* Amber Orange: Review required / Suspicious */
+  --color-status-success: #16a34a;  /* Emerald Green: Safe / Approved */
+}
