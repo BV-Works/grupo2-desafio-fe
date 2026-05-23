@@ -1,0 +1,122 @@
+[
+    {
+      "id": 1,
+      "date": "2026-05-23T08:15:00Z",
+      "originAccount": "ACC-001",
+      "destinationAccount": "ACC-145",
+      "amount": 320.5,
+      "riskScore": 0.92,
+      "modelPrediction": "fraud",
+      "reviewStatus": "pending"
+    },
+    {
+      "id": 2,
+      "date": "2026-05-23T09:40:00Z",
+      "originAccount": "ACC-008",
+      "destinationAccount": "ACC-301",
+      "amount": 45.99,
+      "riskScore": 0.12,
+      "modelPrediction": "legitimate",
+      "reviewStatus": "reviewed"
+    },
+    {
+      "id": 3,
+      "date": "2026-05-23T10:05:00Z",
+      "originAccount": "ACC-054",
+      "destinationAccount": "ACC-220",
+      "amount": 4999.99,
+      "riskScore": 0.98,
+      "modelPrediction": "fraud",
+      "reviewStatus": "under_review"
+    },
+    {
+      "id": 4,
+      "date": "2026-05-23T10:32:00Z",
+      "originAccount": "ACC-120",
+      "destinationAccount": "ACC-075",
+      "amount": 210.0,
+      "riskScore": 0.34,
+      "modelPrediction": "legitimate",
+      "reviewStatus": "pending"
+    },
+    {
+      "id": 5,
+      "date": "2026-05-23T11:20:00Z",
+      "originAccount": "ACC-201",
+      "destinationAccount": "ACC-404",
+      "amount": 799.9,
+      "riskScore": 0.87,
+      "modelPrediction": "fraud",
+      "reviewStatus": "pending"
+    },
+    {
+      "id": 6,
+      "date": "2026-05-23T12:02:00Z",
+      "originAccount": "ACC-033",
+      "destinationAccount": "ACC-890",
+      "amount": 65.75,
+      "riskScore": 0.08,
+      "modelPrediction": "legitimate",
+      "reviewStatus": "pending"
+    },
+    {
+      "id": 7,
+      "date": "2026-05-23T12:45:00Z",
+      "originAccount": "ACC-777",
+      "destinationAccount": "ACC-010",
+      "amount": 15000,
+      "riskScore": 0.99,
+      "modelPrediction": "fraud",
+      "reviewStatus": "confirmed_fraud"
+    },
+    {
+      "id": 8,
+      "date": "2026-05-23T13:18:00Z",
+      "originAccount": "ACC-114",
+      "destinationAccount": "ACC-560",
+      "amount": 120.3,
+      "riskScore": 0.27,
+      "modelPrediction": "legitimate",
+      "reviewStatus": "pending"
+    },
+    {
+      "id": 9,
+      "date": "2026-05-23T14:07:00Z",
+      "originAccount": "ACC-900",
+      "destinationAccount": "ACC-222",
+      "amount": 2300,
+      "riskScore": 0.81,
+      "modelPrediction": "fraud",
+      "reviewStatus": "under_review"
+    },
+    {
+      "id": 10,
+      "date": "2026-05-23T14:51:00Z",
+      "originAccount": "ACC-017",
+      "destinationAccount": "ACC-018",
+      "amount": 18.5,
+      "riskScore": 0.05,
+      "modelPrediction": "legitimate",
+      "reviewStatus": "reviewed"
+    },
+    {
+      "id": 11,
+      "date": "2026-05-23T15:23:00Z",
+      "originAccount": "ACC-451",
+      "destinationAccount": "ACC-300",
+      "amount": 9999,
+      "riskScore": 0.95,
+      "modelPrediction": "fraud",
+      "reviewStatus": "pending"
+    },
+    {
+      "id": 12,
+      "date": "2026-05-23T16:10:00Z",
+      "originAccount": "ACC-099",
+      "destinationAccount": "ACC-710",
+      "amount": 340.8,
+      "riskScore": 0.42,
+      "modelPrediction": "legitimate",
+      "reviewStatus": "false_positive"
+    }
+  ]

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from "./pages/LoginPage/LoginPage"; 
 import DashboardPage from "./pages/DashboardPage/DashboardPage"; 
 import ProtectedRoute from './routes/ProtectedRoute';
+import TransactionDetailPage from './pages/TransactionDetail/TransactionDetail';
 function App() {
   return (
     <BrowserRouter> 
@@ -15,19 +16,12 @@ function App() {
                                 </ProtectedRoute>
                                 
             } />
-          
-
-{/*         <Route path="/transactions" element={ 
-          <ProtectedRoute>
-            <GenerateProgramPage />
-          </ProtectedRoute>
-         } />
 
          <Route path='/transactions/:id' element= {
           <ProtectedRoute>
-            <ProgramDetailPage />
+            <TransactionDetailPage />
           </ProtectedRoute>
-         } /> */}
+         } /> 
       </ Routes>
     </BrowserRouter>
   ); 
