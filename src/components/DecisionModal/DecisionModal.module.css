@@ -1,14 +1,104 @@
-.card {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-lg);
+.overlay {
+    position: fixed;
+    inset: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: rgba(15, 23, 42, 0.55);
+  
     padding: var(--space-lg);
-    box-shadow: var(--shadow-sm);
-  }
   
-  .card h2 {
-    margin-bottom: var(--space-md);
-  }
-  
-  .card p {
-    margin-bottom: var(--space-sm);
+    z-index: 1000;
+
+    & .modal {
+        width: 100%;
+        max-width: 420px;
+      
+        background-color: var(--color-bg-card);
+      
+        border-radius: var(--radius-lg);
+      
+        padding: var(--space-xl);
+      
+        box-shadow: var(--shadow-lg);
+      
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+
+          
+        @media (max-width: 480px) {
+            padding: var(--space-lg);
+        }
+      }
+
+      & .modal h2 {
+        color: var(--color-text-main);
+      }
+
+      & .modal p {
+        color: var(--color-text-muted);
+      }
+
+      & .action {
+        font-weight: 700;
+        color: var(--color-status-critical);
+      
+        padding: var(--space-sm);
+      
+        background-color: var(--color-bg-surface);
+      
+        border-radius: var(--radius-md);
+      
+        text-align: center; 
+      }
+
+      &  .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--space-md);
+      
+        margin-top: var(--space-md);
+          
+        @media (max-width: 480px) {
+        
+            flex-direction: column;
+        }
+      }
+
+      &   .cancelButton,
+      .confirmButton {
+        border: none;
+      
+        padding: 0.75rem 1rem;
+      
+        border-radius: var(--radius-md);
+      
+        font-weight: 600;
+      
+        transition: opacity 0.2s ease;
+
+          
+        @media (max-width: 480px) {
+            width: 100%;
+            }
+      }
+
+      &   .cancelButton:hover,
+      .confirmButton:hover {
+        opacity: 0.9;
+      }
+
+      & .cancelButton {
+        background-color: var(--color-border);
+        color: var(--color-text-main);
+      }
+
+      & .confirmButton {
+        background-color: var(--color-status-critical);
+        color: white;
+      }
+
   }
