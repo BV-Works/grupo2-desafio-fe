@@ -1,11 +1,10 @@
 import styles from "./ClientsTable.module.css"; 
+import TableShell from "../TableShell/TableShell";
 
 function ClientsTable({ clients }) {
   return (
-    <section className={styles.ClientsTable}>
-      <h2>Related Clients</h2>
-    <div className={styles.tableWrapper}>
-      <table className={styles.table}>
+    <TableShell title="Related Clients" >
+      <table className={styles.ClientsTable}>
         <thead>
           <tr>
             <th>ID</th>
@@ -25,8 +24,7 @@ function ClientsTable({ clients }) {
         </tbody>
       </table>
 
-    </div>
-    </section>
+    </TableShell>
   );
 }
 

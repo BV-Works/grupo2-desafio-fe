@@ -1,13 +1,12 @@
 import styles from "./TransactionsTable.module.css";
 import { useNavigate } from "react-router-dom"; 
+import TableShell from "../TableShell/TableShell"; 
 
 function TransactionsTable({ transactions }) {
   const navigate = useNavigate(); 
   return (
-    <section className={styles.TransactionsTable}>
-      <h2>Transactions Queue</h2>
-    <div className={styles.tableWrapper}>
-      <table className={styles.table}>
+    <TableShell title="Transactions Queue" >
+      <table className={styles.TransactionsTable}>
         <thead>
           <tr>
             <th>ID</th>
@@ -49,8 +48,7 @@ function TransactionsTable({ transactions }) {
         </tbody>
       </table>
 
-    </div>
-    </section>
+    </TableShell>
   );
 }
 

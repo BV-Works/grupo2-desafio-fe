@@ -1,23 +1,8 @@
 .TransactionsTable {
-
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: var(--space-md);
-    gap: var(--space-lg);
-
-    & .tableWrapper {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    & table {
-        width: 100%;
-        min-width: 720px;
-        border-collapse: separate;
-        border-spacing: 0 0.5rem;
-    }
+    width: 100%;
+    min-width: 720px;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
 
     & td, th {
         padding: var(--space-md) var(--space-sm);
