@@ -1,6 +1,8 @@
 # Enviroment
 .env
 .env.local
+# vite
+.vite/
 # Logs
 logs
 *.log
