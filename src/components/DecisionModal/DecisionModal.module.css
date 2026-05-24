@@ -1,0 +1,14 @@
+.card {
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .card h2 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .card p {
+    margin-bottom: var(--space-sm);
+  }

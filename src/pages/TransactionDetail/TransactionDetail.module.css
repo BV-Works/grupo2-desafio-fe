@@ -1,8 +1,56 @@
 .TransactionDetail {
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    padding: var(--space-md);
+
+    display: flex;
+    flex-direction: column;
     gap: var(--space-lg);
+      
+    & .backLink {
+    color: var(--color-primary);
+    font-weight: 600;
+    }
+      
+    & .cardsGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-lg);
+
+    @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+    
+      }
+    }
+      
+    & .actions {
+    display: flex;
+    gap: var(--space-md);
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+      
+    & .dangerButton,
+    .successButton {
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    color: white;
+    font-weight: 600;
+    }
+      
+    & .dangerButton {
+    background-color: var(--color-status-critical);
+    }
+      
+    & .successButton {
+    background-color: var(--color-status-success);
+    }
+      
+    & .decisionMessage {
+    padding: var(--space-md);
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-md);
+    }
+      
+
 }
