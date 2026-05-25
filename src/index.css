@@ -30,6 +30,16 @@ input, button, textarea, select {
 /* 6. Avoid text overflows */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+  color: var(--color-text-main);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 /* 7. Remove default list styles */
@@ -68,6 +78,8 @@ button {
 button:disabled {
   color: var(--color-text-main)
 }
+
+
 
 :root {
 
