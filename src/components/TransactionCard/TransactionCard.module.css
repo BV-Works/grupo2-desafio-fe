@@ -1,14 +1,14 @@
 .card {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-lg);
-    padding: var(--space-lg);
-    box-shadow: var(--shadow-sm);
+
+  & .lowRisk {
+    color: var(--color-status-success);
+
   }
-  
-  .card h2 {
-    margin-bottom: var(--space-md);
+  & .mediumRisk {
+    color: var(--color-status-warning);
   }
-  
-  .card p {
-    margin-bottom: var(--space-sm);
+  & .highRisk {
+    color: var(--color-status-critical);
+
   }
+}
