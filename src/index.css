@@ -33,13 +33,22 @@ p, h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-main);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
 h1 {
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* 7. Remove default list styles */
@@ -73,6 +82,7 @@ main {
 
 button {
   cursor: pointer; 
+  font: inherit;
 }
 
 button:disabled {
