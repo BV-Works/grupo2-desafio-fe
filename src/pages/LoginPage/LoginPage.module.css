@@ -1,0 +1,44 @@
+.LoginPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+
+    & form {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; 
+        width: 80%;
+
+    }
+
+    & div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    & .center {
+        width: 100%;
+        display: flex; 
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    & button {
+        padding: 0px 10px;
+        background-color: var(--color-primary);
+        color: var(--color-bg-main);
+
+    }
+    
+    & .error {
+        color: var(--color-status-critical);
+        
+    }
+}

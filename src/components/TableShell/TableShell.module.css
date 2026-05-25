@@ -1,0 +1,19 @@
+.TableShell {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-md);
+    gap: var(--space-lg);
+
+    & .title {
+        margin-bottom: var(--space-md);
+        color: var(--color-text-main);
+        
+    }
+
+    & .tableWrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
