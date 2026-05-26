@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"; 
-import { AuthContext } from "./authContext";
-import apiClient from "../api/client";
+import { authContext as AuthContext } from "./authContext";
+import { login as loginService, getUser, logout as logoutService } from "../services/auth.service"; 
 
 export function AuthProvider({ children }) {
     const [ user, setUser ] = useState(null); 
@@ -10,10 +10,9 @@ export function AuthProvider({ children }) {
     const fetchUser = async () => {
 
         try {
-            const response = await apiClient.get("/auth/me"); 
+            const data = await getUser(); 
             
-            setUser(response.data.user); 
-            setError(""); 
+            setUser(data.user);  
 
         } catch (err) {
             setUser(null); 
@@ -31,11 +30,11 @@ export function AuthProvider({ children }) {
         setError(""); 
 
         try {
-            const response = await apiClient.post("/auth/login", credentials); 
+            const data = await loginService(credentials); 
 
-            setUser(response.data.user); 
+            setUser(data.user); 
 
-            return response; 
+            return data; 
 
         } catch (err) {
             const message = err.response?.data?.message || "Login failed"; 
@@ -46,7 +45,7 @@ export function AuthProvider({ children }) {
 
     const logout = async () => {
         try {
-            await apiClient.post("/auth/logout"); 
+            await logoutService(); 
 
             setUser(null); 
 
