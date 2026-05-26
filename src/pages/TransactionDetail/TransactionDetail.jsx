@@ -9,6 +9,8 @@ import clients from "../../data/mockClients.json";
 import TransactionCard from "../../components/TransactionCard/TransactionCard"; 
 import ClientCard from "../../components/ClientCard/ClientCard"; 
 import DecisionModal from "../../components/DecisionModal/DecisionModal"; 
+import PredictionCard from "../../components/PredictionCard/PredictionCard"
+import DecisionCard from "../../components/DecisionCard/DecisionCard";
 
 import { AuthContext } from "../../context/authContext"
 
@@ -37,7 +39,6 @@ function TransactionDetailPage() {
   return (
     <MainLayout >
       <section className={styles.TransactionDetail}>
-        <Link to="/dashboard" >... Back to Dashboard</Link>
         <h1>Transaction #{transaction.id}</h1>
 
         {decision && (
@@ -49,23 +50,13 @@ function TransactionDetailPage() {
         <div className={styles.cardsGrid}>
           <TransactionCard transaction={transaction} />
           <ClientCard client={client} />
+          <PredictionCard transaction={transaction}/>
         </div>
         
-        <div className={styles.actions}>
-        <button
-          className={styles.dangerButton}
-          onClick={() => setModalAction("confirmed_fraud")}
-        >
-          Confirm Fraud
-        </button>
-
-        <button
-          className={styles.successButton}
-          onClick={() => setModalAction("false_positive")}
-        >
-          Allow Transaction
-        </button>
-      </div>
+        <DecisionCard onFraud={()=> setModalAction("confirmed_fraud")}
+                      onFalsePositive={()=> setModalAction("false_positive")}
+                    // use arrow function to pass it's definition
+        /> 
 
       {modalAction && (
         <DecisionModal

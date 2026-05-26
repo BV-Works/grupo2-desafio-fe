@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { AuthContext } from "../../context/authContext";
 
 function Header() {
@@ -19,7 +19,10 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <h2>NovaPay</h2>
+      <Link to="/dashboard" >
+        <h2>NovaPay</h2>
+      </Link>
+      
 
       <div className={styles.userSection}>
         <span>{user ? user.name : "Analyst"}</span>

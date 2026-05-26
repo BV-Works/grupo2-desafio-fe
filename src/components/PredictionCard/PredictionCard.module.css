@@ -1,0 +1,19 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & .chartWrapper {
+        height: 300px;
+        width: 300px;
+        margin: auto;
+        border-radius: 50%;
+        background: crimson;
+      }
+    & .mediumRisk {
+      color: var(--color-status-warning);
+    }
+    & .highRisk {
+      color: var(--color-status-critical);
+      
+    }
+  }
