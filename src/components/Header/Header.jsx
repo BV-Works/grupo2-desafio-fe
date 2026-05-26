@@ -1,11 +1,10 @@
 import styles from "./Header.module.css";
-import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom"
-import { AuthContext } from "../../context/authContext";
+import { useAuth } from "../../context/useAuth";
 
 function Header() {
   const navigate = useNavigate(); 
-  const { user, loading, logout } = useContext(AuthContext); 
+  const { user, loading, logout } = useAuth(); 
 
   const handleLogout = async () => {
     try {

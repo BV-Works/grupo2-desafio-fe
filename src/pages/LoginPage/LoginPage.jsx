@@ -1,14 +1,14 @@
-import { useState, useContext } from "react"; 
+import { useState } from "react"; 
 import { useNavigate } from "react-router-dom"; 
 
-import { AuthContext } from "../../context/authContext"
+import { useAuth } from "../../context/useAuth"; 
 import { validateEmail, validatePassword } from "../../utils/regex";
 import styles from "./LoginPage.module.css"; 
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 
 export default function LoginPage () {
     const navigate = useNavigate(); 
-    const { login } = useContext(AuthContext); 
+    const { login } = useAuth(); 
 
     const [ formData, setFormData ] = useState({ email: "", password: "" }); 
 
