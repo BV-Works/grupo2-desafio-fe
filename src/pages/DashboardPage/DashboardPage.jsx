@@ -33,23 +33,28 @@ export default function DashboardPage() {
         <MainLayout>
             <main className={styles.DashboardPage}>
                 <h1>Dashboard</h1>
+                <section id="tables">
+                    <div className={styles.tablesWrapper}>
+                        <TransactionsTable transactions={pendingTransactions} />
+                        <ClientsTable clients={fraudClients} />
+                    </div>
+                </section>
 
-                <div className={styles.tablesWrapper}>
-                    <TransactionsTable transactions={pendingTransactions} />
-                    <ClientsTable clients={fraudClients} />
-                </div>
+                <section id="metrics">
+                    <h2>Metrics</h2>
+                    <div className={styles.chartsWrapper}>
+                        <BooleanBarChart
+                            title="Transacciones por horario"
+                            data={nightChartData}
+                        />
 
-                <div className={styles.chartsWrapper}>
-                    <BooleanBarChart
-                        title="Transacciones por horario"
-                        data={nightChartData}
-                    />
-
-                    <BooleanDonutChart
-                        title="Transacciones por día"
-                        data={weekendChartData}
-                    />
-                </div>
+                        <BooleanDonutChart
+                            title="Transacciones por día"
+                            data={weekendChartData}
+                        />
+                    </div>
+                </section>
+                
             </main>
         </MainLayout>
     )
