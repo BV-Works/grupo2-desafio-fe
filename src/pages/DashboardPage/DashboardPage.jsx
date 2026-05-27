@@ -3,9 +3,11 @@ import TransactionsTable from "../../components/TransactionsTable/TransactionsTa
 import ClientsTable from "../../components/ClientsTable/ClientsTable"
 import BooleanBarChart from "../../components/BooleanBarChart/BooleanBarChart"
 import BooleanDonutChart from "../../components/BooleanDonutChart/BooleanDonutChart"
+import FraudPredictionsChart from "../../components/FraudPredictionsChart/FraudPredictionsChart"
 import transactions from "../../data/mockTransactions.json"
 import clients from "../../data/mockClients.json"
 import transaccionesMock from "../../data/transaccionesMock.json"
+import predicciones from "../../data/predicciones_aplanadas.json"
 
 import styles from "./DashboardPage.module.css"
 
@@ -50,6 +52,8 @@ export default function DashboardPage() {
                         data={weekendChartData}
                     />
                 </div>
+
+                <FraudPredictionsChart predictions={predicciones} />
             </main>
         </MainLayout>
     )
