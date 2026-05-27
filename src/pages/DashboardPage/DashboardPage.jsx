@@ -109,45 +109,6 @@ export default function DashboardPage() {
                                             onPrev={() => setTransactionsPage((page) => page - 1)}
                                             onNext={() => setTransactionsPage((page) => page + 1)} />
 
-                        {/*<section>
-                            <h2>Client Filters</h2>
-
-                            <select
-                            name="country"
-                            value={clientFilters.country}
-                            onChange={handleClientFilterChange}
-                            >
-                            <option value="">All countries</option>
-                            <option value="ES">Spain</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                            <option value="IT">Italy</option>
-                            <option value="PT">Portugal</option>
-                            </select>
-
-                            <select
-                            name="region"
-                            value={clientFilters.region}
-                            onChange={handleClientFilterChange}
-                            >
-                            <option value="">All regions</option>
-                            <option value="Madrid">Madrid</option>
-                            <option value="Barcelona">Barcelona</option>
-                            <option value="Paris">Paris</option>
-                            <option value="Berlin">Berlin</option>
-                            </select>
-
-                            <select
-                            name="risk"
-                            value={clientFilters.risk}
-                            onChange={handleClientFilterChange}
-                            >
-                            <option value="">All risk levels</option>
-                            <option value="low">Low risk</option>
-                            <option value="medium">Medium risk</option>
-                            <option value="high">High risk</option>
-                            </select>
-                        </section> */}
 
                         {clientsLoading && <p>Loading clients...</p>}
                         {clientsError && <p>{clientsError}</p>}
