@@ -60,12 +60,8 @@ function TransactionCard({ transaction }) {
       <p><strong>Account State:</strong> {transaction.estado_cuenta}</p>
       <p><strong>Current balance:</strong> {transaction.saldo_actual}</p>
       <p><strong>Monthly average balance:</strong> {transaction.saldo_medio_30_dias}</p>
-      <p><strong>Transaction Amount:</strong> {transaction.amount} €</p>
+      <p><strong>Transaction Amount:</strong> {transaction.importe_transaccion} €</p>
       <p><strong>Transaction Limit (set by client):</strong> {transaction.limite_importe_transacciones} €</p>
-      <p className={  transaction.riskScore < 25 ? styles.lowRisk
-                    : transaction.riskScore >= 25 && transaction.riskScore < 70 ? styles.mediumRisk
-                    : styles.highRisk }
-      ><strong>Risk:</strong> {Math.round(transaction.risk_score)}%</p>
       <p><strong>Transactions in the last hour:</strong> {transaction.numero_transacciones_ultima_hora}</p>
       <p><strong>Country:</strong> {transaction.operacion_pais}</p>
       <p><strong>Region:</strong> {transaction.operacion_region}</p>
