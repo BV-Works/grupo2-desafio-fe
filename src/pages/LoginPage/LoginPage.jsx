@@ -27,7 +27,7 @@ export default function LoginPage () {
         setError(""); 
 
         if (!validateEmail(formData.email) || !validatePassword(formData.password)) {
-            setError("Formato de email o password inválido"); 
+            return setError("Formato de email o password inválido"); 
         }
 
         try {
