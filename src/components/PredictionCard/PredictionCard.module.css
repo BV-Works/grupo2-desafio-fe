@@ -3,12 +3,33 @@
     flex-direction: column;
     justify-content: space-between;
     & .chartWrapper {
-        height: 300px;
-        width: 300px;
+        display: grid;
+        place-items: center;
+        height: 260px;
+        width: min(100%, 300px);
         margin: auto;
-        border-radius: 50%;
-        background: crimson;
       }
+    & .chart {
+        width: min(100%, 230px);
+        height: auto;
+        overflow: visible;
+      }
+    & .riskSlice {
+        fill: var(--color-status-critical);
+      }
+    & .safeSlice {
+        fill: var(--color-bg-card);
+        stroke: var(--color-border);
+        stroke-width: 2;
+      }
+    & .chartValue {
+        fill: var(--color-text-main);
+        font-size: 2rem;
+        font-weight: 700;
+      }
+    & .lowRisk {
+      color: var(--color-status-success);
+    }
     & .mediumRisk {
       color: var(--color-status-warning);
     }
