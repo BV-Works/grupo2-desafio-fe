@@ -19,8 +19,68 @@
     
       }
     }
-      
+    & .successModalOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Se asegura de estar por encima de cualquier otra tarjeta o menú */
+    }
     
-      
+   & .successModalContent {
+      background-color: #ffffff; /* Cambia al fondo oscuro de tu app si usas dark mode */
+      color: #333333;            /* Cambia el color del texto si es necesario */
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+      animation: fadeIn 0.2s ease-out; /* Un pequeño efecto de aparición */
+    }
+    
+    & .successModalContent h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+    
+    & .successModalContent p {
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    
+   & .dashboardBtn {
+      background-color: var(--color-primary-dark); 
+      color: var(--color-bg-main);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      width: 100%;
+    }
+    
+    & .dashboardBtn:hover {
+      background-color: var(--color-primary);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
 }
