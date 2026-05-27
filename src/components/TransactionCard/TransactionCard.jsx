@@ -54,19 +54,25 @@ import CardShell from "../CardShell/CardShell";
 
 function TransactionCard({ transaction }) {
   return (
-    <CardShell title="Origin Details" className={styles.card}>
+    <CardShell title="Transaction Details" className={styles.card}>
 
-
-      <p><strong>Account State:</strong> {transaction.estado_cuenta}</p>
-      <p><strong>Current balance:</strong> {transaction.saldo_actual}</p>
-      <p><strong>Monthly average balance:</strong> {transaction.saldo_medio_30_dias}</p>
+    <p className={  transaction.is_night ? styles.highRisk
+                    : styles.lowRisk }><strong>Transaction Time:</strong> {new Date(transaction.fecha_hora).toLocaleString(
+                "es-ES", {
+                    day: "2-digit", 
+                    month: "2-digit", 
+                    hour: "2-digit",
+                    minute: "2-digit"
+                })
+      } </p>
       <p><strong>Transaction Amount:</strong> {transaction.importe_transaccion} €</p>
-      <p><strong>Transaction Limit (set by client):</strong> {transaction.limite_importe_transacciones} €</p>
       <p><strong>Transactions in the last hour:</strong> {transaction.numero_transacciones_ultima_hora}</p>
-      <p><strong>Country:</strong> {transaction.operacion_pais}</p>
-      <p><strong>Region:</strong> {transaction.operacion_region}</p>
+      <p><strong>Country / Region:</strong> {`${transaction.operacion_pais} / ${transaction.operacion_region}`}</p>
       <p className={  transaction.destino_alto_riesgo ? styles.highRisk
                     : styles.lowRisk }><strong>High-Risk Destination:</strong> {transaction.destino_alto_riesgo ? "Yes" : "No"}</p>
+      <p><strong>Auth Method:</strong> {transaction.metodo_autenticacion}</p>
+      <p className={  transaction.dispositivo_reconocido ? styles.lowRisk
+                    : styles.highRisk }><strong>{transaction.dispositivo_reconocido ? "Usual Device" : "Unknown Device"}</strong></p> 
 
     </CardShell>
   );

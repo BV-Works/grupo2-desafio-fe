@@ -2,20 +2,11 @@ import styles from "./ClientCard.module.css";
 import CardShell from "../CardShell/CardShell";
 
 /* {
-  "id_transaccion": "trx-002",
-  "id_cliente": "cli-002",
-  "id_cuenta": "acc-002",
-  "cuenta_origen": "FR20427866183",
-  "estado_cuenta": "activa",
-  "saldo_actual": 8500,
-  "saldo_medio_30_dias": 7900,
   "volumen_entrante_30_dias": 12000,
   "volumen_saliente_30_dias": 9500,
   "numero_transferencias_recibidas_7_dias": 10,
   "numero_transferencias_enviadas_7_dias": 8,
-  "id_tarjeta": "card-002",
   "estado_tarjeta": "activa",
-  "fecha_creacion_tarjeta": "2022-03-12",
   "antiguedad_tarjeta_dias": 800,
   "limite_importe_transacciones": 5000,
   "veces_superar_limite_7_dias": 1,
@@ -32,9 +23,6 @@ import CardShell from "../CardShell/CardShell";
   "dispositivo_reconocido": false,
   "operacion_pais": "DE",
   "operacion_region": "Berlin",
-  "direccion_ip_origen": "102.54.22.11",
-  "geolocalizacion": "52.5200,13.4050",
-  "cuenta_destino": "DE9988776655",
   "destino_alto_riesgo": true,
   "target_final": null,
   "fecha_revision": null,
@@ -60,10 +48,17 @@ function ClientCard({ transaction }) {
   return (
     <CardShell title="Account Details" className={styles.card}>
 
-      <p><strong>State:</strong> {transaction.estado_cuenta}</p>
-      <p><strong>Region:</strong> {transaction.estado_cuenta}</p>
-      <p><strong>Frauds:</strong> {transaction.estado_cuenta}</p>
-      <p><strong>Status:</strong> {transaction.estado_cuenta ? "Active" : "Blocked"}</p>
+      <p><strong>Status:</strong> {transaction.estado_cuenta}</p>
+      <p><strong>Balance:</strong> {transaction.saldo_actual}</p>
+      <p><strong>Average balance/last 30 days:</strong> {transaction.saldo_medio_30_dias}</p>
+
+      <h2>Card Details</h2>
+      <p className={transaction.estado_tarjeta === "activa" ? styles.lowRisk : styles.highRisk}><strong>Status:</strong> {transaction.estado_tarjeta}</p>
+      <p><strong>Limit:</strong> {transaction.limite_importe_transacciones}</p>
+      <p><strong>Days active:</strong> {transaction.antiguedad_tarjeta_dias}</p>
+      <p className={transaction.numero_pin_disponibles === 3 ? styles.lowRisk : transaction.numero_pin_disponibles > 0 ? styles.highRisk : styles.highRisk}><strong>Pin attempts available:</strong> {transaction.numero_pin_disponibles}</p>
+      
+
 
     </CardShell>
 
