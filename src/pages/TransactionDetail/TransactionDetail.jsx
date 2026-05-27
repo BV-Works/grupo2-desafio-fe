@@ -3,8 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import styles from "./TransactionDetail.module.css"; 
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 
-import clients from "../../data/mockClients.json"; 
-
 import TransactionCard from "../../components/TransactionCard/TransactionCard"; 
 import ClientCard from "../../components/ClientCard/ClientCard"; 
 import DecisionModal from "../../components/DecisionModal/DecisionModal"; 
@@ -100,11 +98,6 @@ function TransactionDetailPage() {
     fetchTransaction(); 
   }, [])
 
-  /* const transaction = await getTransactionById(id) */
-  const client = clients.find(client => client.id_cliente === 2); 
-
-  if (!client) return <p>Client not found</p>; 
-
   const handleConfirmDecision = () => {
     setDecision({
       action: modalAction, 
@@ -151,7 +144,7 @@ function TransactionDetailPage() {
 
         <div className={styles.cardsGrid}>
           <TransactionCard transaction={transaction} />
-          <ClientCard client={client} />
+          <ClientCard transaction={transaction} />
           <PredictionCard transaction={transaction}/>
         </div>
         
