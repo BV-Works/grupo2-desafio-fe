@@ -246,3 +246,56 @@ src/
 ├── styles/
 ├── utils/
 └── data/
+ ```
+---
+
+## Team
+**Full Stack Team**
+- Pablo Vecilla
+https://github.com/PabloVecilla
+- Mario Sánchez
+https://github.com/MarioMS2000
+- BV Works
+https://github.com/BV-Works
+
+---
+
+## Future Improvements
+**UX Improvements**
+- Better mobile usability
+- Improved table overflow handling
+- Loading spinners and skeleton states
+- Enhanced spacing and visual hierarchy
+- Clean Code & Architecture
+- Further componentization
+- Shared Button component system
+- Reusable form abstractions
+- Success/feedback modal abstraction
+- Additional reusable UI primitives
+- 
+## Product Improvements
+- Advanced filtering
+- Transaction search
+- Analytics dashboard
+- Real-time monitoring
+- Audit logging
+- Expanded fraud visualization tools
+- Learning Objectives
+
+---
+
+## This project focused heavily on:
+
+- collaborative software development
+- frontend/backend integration
+- secure authentication flows
+- API-driven UI architecture
+- reusable React component design
+- responsive dashboard development
+- real-world teamwork workflows
+
+---
+
+## License
+
+Educational project developed for The Bridge Bootcamp.
