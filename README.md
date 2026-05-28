@@ -1,3 +1,4 @@
+```markdown
 # Sentinel — Fraud Detection Dashboard
 
 Sentinel is a fraud detection dashboard designed to help financial analysts distinguish malicious banking transactions from false positives through risk analysis, prediction data, and analyst review workflows.
@@ -55,105 +56,118 @@ Express REST API
 PostgreSQL Database
         ↓
 Fraud Prediction / ML Layer
-```txt
+```
 
 The frontend consumes fraud analysis data generated and processed collaboratively by the Backend, Data Science, and Cybersecurity teams.
 
-Frontend Tech Stack
-React
-React Router DOM
-Vite
-Axios
-CSS Modules
-Motion
-D3
-Recharts
-Bootstrap Icons
-Backend Stack
-Node.js
-Express
-Sequelize
-PostgreSQL
-JWT Authentication
-HTTP-only Cookies
-Docker
+---
 
-Backend Repository:
-https://github.com/BV-Works/grupo2-desafio-be
+## Tech Stack
 
-Data Science Repository:
-https://github.com/CPasData/NovaPay_ML
+### Frontend Tech Stack
+- React
+- React Router DOM
+- Vite
+- Axios
+- CSS Modules
+- Motion
+- D3
+- Recharts
+- Bootstrap Icons
 
-Features
-Authentication & Security
-JWT authentication
-HTTP-only cookie session handling
-Protected routes
-Persistent user session validation
-Secure API communication
-Dashboard
-Transactions Table
-Paginated transaction visualization
-High-risk transaction filtering
-Risk-level visualization
-Responsive overflow handling
-Clickable transaction rows
-Clients Table
-Paginated client overview
-High-risk client visualization
-Responsive table layout
-Transaction Detail View
-Detailed transaction metadata
-Prediction/risk analysis visualization
-Client information panel
-Analyst review workflow
-Fraud confirmation / false positive decisions
-Analyst Decision System
+### Backend Stack
+- Node.js
+- Express
+- Sequelize
+- PostgreSQL
+- JWT Authentication
+- HTTP-only Cookies
+- Docker
 
+### Repositories
+- **Backend Repository:** https://github.com/BV-Works/grupo2-desafio-be
+- **Data Science Repository:** https://github.com/CPasData/NovaPay_ML
+
+---
+
+## Features
+
+### Authentication & Security
+- JWT authentication
+- HTTP-only cookie session handling
+- Protected routes
+- Persistent user session validation
+- Secure API communication
+
+### Dashboard
+- **Transactions Table**
+  - Paginated transaction visualization
+  - High-risk transaction filtering
+  - Risk-level visualization
+  - Responsive overflow handling
+  - Clickable transaction rows
+- **Clients Table**
+  - Paginated client overview
+  - High-risk client visualization
+  - Responsive table layout
+
+### Transaction Detail View
+- Detailed transaction metadata
+- Prediction/risk analysis visualization
+- Client information panel
+- Analyst review workflow
+- Fraud confirmation / false positive decisions
+
+### Analyst Decision System
 Analysts can:
+- Confirm fraudulent activity
+- Mark false positives
+- Update transaction review state through API `PUT` requests
 
-Confirm fraudulent activity
-Mark false positives
-Update transaction review state through API PUT requests
-Frontend Architecture
+---
+
+## Frontend Architecture
 
 The frontend follows a component-based architecture with clear separation of concerns.
 
-Main Architectural Decisions
-Services Layer
+### Main Architectural Decisions
 
+#### Services Layer
 API communication is abstracted through reusable service modules:
 
+```text
 services/
 ├── auth.service.js
 ├── clients.service.js
 └── transactions.service.js
+```
 
 This keeps:
+- API logic separated from UI components
+- components cleaner and easier to maintain
+- backend changes isolated
 
-API logic separated from UI components
-components cleaner and easier to maintain
-backend changes isolated
-Authentication Context
-
+#### Authentication Context
 Global authentication state is handled through React Context API.
 
+```txt
 AuthProvider
-↓
-useAuth()
-↓
+     ↓
+ useAuth()
+     ↓
 Protected Routes / Components
+```
 
 This centralizes:
+- login
+- logout
+- user session handling
+- authenticated state
 
-login
-logout
-user session handling
-authenticated state
-Reusable UI Components
-
+#### Reusable UI Components
 The application progressively evolved toward reusable UI primitives and layout abstractions:
 
+```text
 components/
 ├── TableShell
 ├── CardShell
@@ -161,42 +175,66 @@ components/
 ├── DecisionCard
 ├── TransactionCard
 └── ClientCard
-CSS Architecture
+```
 
+#### CSS Architecture
 Styling uses:
+- CSS Modules
+- shared design tokens
+- reusable spacing/shadow/radius systems
+- responsive layout strategies
 
-CSS Modules
-shared design tokens
-reusable spacing/shadow/radius systems
-responsive layout strategies
-Responsive Design
-
+#### Responsive Design
 The application was designed with responsive dashboard behavior in mind.
 
 Current responsive features:
+- adaptive dashboard grid
+- stacked mobile layouts
+- scrollable table containers
+- responsive cards and modals
 
-adaptive dashboard grid
-stacked mobile layouts
-scrollable table containers
-responsive cards and modals
-Deployment
-Layer	Platform
-Frontend	Netlify
-Backend	Render
-Database	Render
-Environment Variables
+---
 
-Create a .env file in the project root:
+## Deployment
 
+| Layer | Platform |
+| :--- | :--- |
+| **Frontend** | Netlify |
+| **Backend** | Render |
+| **Database** | Render |
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
 VITE_API_URL=your_backend_api_url
-Installation
-Clone repository
-git clone https://github.com/BV-Works/grupo2-desafio-fe.git
-Install dependencies
-npm install
-Start development server
-npm run dev
-Project Structure
+```
+
+---
+
+## Installation
+
+1. **Clone repository**
+   ```bash
+   git clone [https://github.com/BV-Works/grupo2-desafio-fe.git](https://github.com/BV-Works/grupo2-desafio-fe.git)
+   ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## Project Structure
+
+```text
 src/
 ├── api/
 ├── components/
@@ -208,44 +246,3 @@ src/
 ├── styles/
 ├── utils/
 └── data/
-Team
-Full Stack Team
-Pablo Vecilla
-https://github.com/PabloVecilla
-Mario Sánchez
-https://github.com/MarioMS2000
-BV Works
-https://github.com/BV-Works
-Future Improvements
-UX Improvements
-Better mobile usability
-Improved table overflow handling
-Loading spinners and skeleton states
-Enhanced spacing and visual hierarchy
-Clean Code & Architecture
-Further componentization
-Shared Button component system
-Reusable form abstractions
-Success/feedback modal abstraction
-Additional reusable UI primitives
-Product Improvements
-Advanced filtering
-Transaction search
-Analytics dashboard
-Real-time monitoring
-Audit logging
-Expanded fraud visualization tools
-Learning Objectives
-
-This project focused heavily on:
-
-collaborative software development
-frontend/backend integration
-secure authentication flows
-API-driven UI architecture
-reusable React component design
-responsive dashboard development
-real-world teamwork workflows
-License
-
-Educational project developed for The Bridge Bootcamp.
