@@ -87,7 +87,7 @@ function TransactionDetailPage() {
             <div className={styles.successModalContent}>
               <h2>¡Decision stored successfully!</h2>
               <p>
-                Transaction marked as: <strong>{decision.action === "confirmed_fraud" ? "Confirmed Fraud" : "False Positivo"}</strong>
+                Transaction marked as: <strong>{decision.action === "confirmed_fraud" ? "Confirmed Fraud" : "False Positive"}</strong>
               </p>
               <button 
                 onClick={() => navigate('/dashboard')}
