@@ -79,7 +79,8 @@ function TransactionsTable({ transactions, transactionsPage, onPrev, onNext }) {
         <thead>
           <tr>
             <th>Date</th>
-            <th>Customer → Transaction<span>(country)</span></th>
+            <th>Client → Transaction<span>(country)</span></th>
+            <th>Auth Method</th>
             <th>Destination <span>Risk</span></th>
             <th>Amount</th>
             <th>Fraud <span>Probability</span></th>
@@ -101,6 +102,7 @@ function TransactionsTable({ transactions, transactionsPage, onPrev, onNext }) {
                 }
               )} </td>
               <td className={transaction.cuenta_origen.substring(0,2) === transaction.operacion_pais ? styles.lowRisk : styles.highRisk}>{`${transaction.cuenta_origen.substring(0,2)} → ${transaction.operacion_pais}`}</td>
+              <td className={transaction.metodo_autenticacion === "SMS" ? styles.lowRisk : styles.highRisk}>{transaction.metodo_autenticacion}</td>
               <td className={transaction.destino_alto_riesgo ? styles.highRisk
                             : styles.lowRisk
               }>{transaction.destino_alto_riesgo ? "High" : "Low"}</td>

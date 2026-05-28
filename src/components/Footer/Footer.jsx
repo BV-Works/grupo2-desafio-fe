@@ -1,15 +1,17 @@
-import styles from "./Footer.module.css"
-export default function Footer () {
+import styles from "./Footer.module.css";
+export default function Footer() {
+    return (
+  <footer>
     <div className={styles.Footer}>
-        <h3>Grupo 2</h3>
-        <div>
-            <h2>Cybersecurity</h2>
-        </div>
-        <div>
-            <h2>Data Science</h2>
-        </div>
-        <div>
-            <h2>Full Stack</h2>
-        </div>
+      <div>
+        <h3>Cybersecurity</h3>
+      </div>
+      <div>
+        <h3>Data Science</h3>
+      </div>
+      <div>
+        <h3>Full Stack</h3>
+      </div>
     </div>
+  </footer>);
 }

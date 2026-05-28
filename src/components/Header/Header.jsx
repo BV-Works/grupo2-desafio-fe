@@ -1,6 +1,7 @@
 import styles from "./Header.module.css";
 import { useNavigate, Link } from "react-router-dom"
 import { useAuth } from "../../context/useAuth";
+import logo from "../../assets/logo1.png";
 
 function Header() {
   const navigate = useNavigate(); 
@@ -20,6 +21,10 @@ function Header() {
     <header className={styles.header}>
       <Link to="/dashboard" >
         <h2>NovaPay</h2>
+        <img
+          src={logo}
+          alt="Logo"
+        />
       </Link>
       
 

@@ -5,7 +5,7 @@ import { useAuth } from "../../context/useAuth";
 import { validateEmail, validatePassword } from "../../utils/regex";
 import styles from "./LoginPage.module.css"; 
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
-
+import logo from "../../assets/logo1.png";
 export default function LoginPage () {
     const navigate = useNavigate(); 
     const { login } = useAuth(); 
@@ -41,40 +41,57 @@ export default function LoginPage () {
 
     }; 
     return (
-        <AuthLayout >
-        <main className={styles.LoginPage}>
-            <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email: </label>
-                    <input type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange} 
-                />
+        <AuthLayout>
+            <main className={styles.LoginPage}>
+                
+                <div className={styles.card}>
+
+                    <div className={styles.logoWrapper}>
+                        <img
+                            src={logo}
+                            alt="Logo"
+                            className={styles.logo}
+                        />
+                    </div>
+
+                    <h1 className={styles.title}>Login</h1>
+
+                    <form onSubmit={handleSubmit} className={styles.form}>
+                        
+                        <div className={styles.field}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className={styles.field}>
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <button type="submit" className={styles.button}>
+                            Login
+                        </button>
+
+                        {error && <p className={styles.error}>{error}</p>}
+                    </form>
 
                 </div>
 
-                <div>
-                    <label htmlFor="password">Password: </label>
-                    <input type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Password"
-                        value={formData.password} 
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className={styles.center}><button type="submit">Login</button></div>
-
-                </form>
-            
-        {error && <p className={styles.error}>{ error }</p>}
-
-        </main>
+            </main>
         </AuthLayout>
     ); 
 }; 

@@ -94,7 +94,14 @@ export default function DashboardPage() {
         <MainLayout>
             <main className={styles.DashboardPage}>
                 <h1>Dashboard</h1>
-
+                <section id="metrics">
+                    <h2 className={styles.titleMetrics}>Metrics</h2>
+                    <FraudMetrics
+                        transactions={metricTransactions} // pasa las transacciones usadas para calcular las gráficas
+                        isLoading={metricsLoading}
+                        error={metricsError}
+                    />
+                </section>
                 <section id="tables">
                     <div className={styles.tablesWrapper}>
                         <TransactionsTable transactions={transactions}
@@ -107,23 +114,7 @@ export default function DashboardPage() {
                         {clientsError && <p>{clientsError}</p>}
                         {transactionsLoading && <p>Loading transactions...</p>}
                         {transactionsError && <p>{transactionsError}</p>}
-
-                        <ClientsTable
-                            clients={clients}
-                            clientsPage={clientsPage}
-                            onPrev={() => setClientsPage((page) => page - 1)}
-                            onNext={() => setClientsPage((page) => page + 1)}
-                        />
                     </div>
-                </section>
-
-                <section id="metrics">
-                    <h2>Metrics</h2>
-                    <FraudMetrics
-                        transactions={metricTransactions} // pasa las transacciones usadas para calcular las gráficas
-                        isLoading={metricsLoading}
-                        error={metricsError}
-                    />
                 </section>
             </main>
         </MainLayout>

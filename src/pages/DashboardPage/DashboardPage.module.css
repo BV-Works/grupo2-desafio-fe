@@ -1,18 +1,22 @@
 .DashboardPage {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 
-    & .tablesWrapper {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
-        align-items: start;
-
-        @media (min-width: 1200px) {
-            grid-template-columns: 2fr 1fr;
-            gap: var(--space-lg);
-        }
-
+  & .tablesWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    align-items: start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    @media (min-width: 1200px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
     }
+  }
+
+  .titleMetrics {
+    margin-bottom: var(--space-md);
+  }
 }

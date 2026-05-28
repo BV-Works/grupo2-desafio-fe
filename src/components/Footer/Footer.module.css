@@ -1,6 +1,22 @@
 .Footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  width: 100%;
+  padding: 20px 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  color: var(--color-text-main);
+
+  background: linear-gradient(
+    135deg,
+    rgba(30, 58, 138, 0.12) 0%,
+    rgba(59, 130, 246, 0.08) 40%,
+    rgba(248, 250, 252, 1) 100%
+  );
+
+  border-top: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
 }

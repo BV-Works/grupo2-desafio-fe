@@ -1,44 +1,122 @@
 .LoginPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; 
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    & form {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px; 
-        width: 80%;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(30, 58, 138, 0.25),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #0f172a 0%, #1e3a8a 25%, #3b82f6 55%, #eef2f7 100%);
+}
 
-    }
+/* 🧱 tarjeta login */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px rgba(0, 40, 120, 0.15);
 
-    & div {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    & .center {
-        width: 100%;
-        display: flex; 
-        justify-content: center;
-        margin-top: 20px;
-    }
+/* 🖼️ logo */
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+}
 
-    & button {
-        padding: 0px 10px;
-        background-color: var(--color-primary);
-        color: var(--color-bg-main);
+.logo {
+  /* width: 90px; */
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(50%) saturate(3000%) hue-rotate(200deg);
+  width: 170px;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
 
-    }
-    
-    & .error {
-        color: var(--color-status-critical);
-        
-    }
+.logo:hover {
+  transform: scale(1.08);
+}
+
+/* 🧾 título */
+.title {
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #0f2f5f;
+}
+
+/* form */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* inputs */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  color: #3b5b7a;
+}
+
+.field input {
+  padding: 10px 12px;
+  border: 1px solid #cfe3ff;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.field input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+/* botón */
+.button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2f80ed, #56ccf2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(47, 128, 237, 0.25);
+}
+
+/* error */
+.error {
+  color: #e74c3c;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 5px;
 }
