@@ -1,4 +1,4 @@
-```markdown
+
 # Sentinel — Fraud Detection Dashboard
 
 Sentinel is a fraud detection dashboard designed to help financial analysts distinguish malicious banking transactions from false positives through risk analysis, prediction data, and analyst review workflows.
