@@ -39,7 +39,7 @@ function ClientsTable({ clients, clientsPage, onPrev, onNext }) {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Fraud cases</th>
+            <th>Fraud cases <span>(last year)</span></th>
             <th>Risk score</th>
           </tr>
         </thead>
@@ -49,7 +49,7 @@ function ClientsTable({ clients, clientsPage, onPrev, onNext }) {
             <tr key={client.id_cliente}>
                 <td>{client.id_cliente}</td>
                 <td>{client.numero_fraudes_ultimo_ano}</td>
-                <td>{client.risk_score}</td>
+                <td>{(Number(client.risk_score)).toFixed(2)}</td>
             </tr>
           ))}
         </tbody>

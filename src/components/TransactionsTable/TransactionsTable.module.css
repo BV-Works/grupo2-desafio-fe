@@ -9,6 +9,10 @@
         text-align: center;
     }
 
+    & th span {
+        display: block;
+    }
+
     & tbody tr {
         background-color: var(--color-bg-card);
 

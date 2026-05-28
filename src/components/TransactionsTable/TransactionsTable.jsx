@@ -79,12 +79,11 @@ function TransactionsTable({ transactions, transactionsPage, onPrev, onNext }) {
         <thead>
           <tr>
             <th>Date</th>
-            <th>Origin</th>
-            <th>Destination</th>
-            <th>Destination Risk</th>
+            <th>Customer → Transaction<span>(country)</span></th>
+            <th>Destination <span>Risk</span></th>
             <th>Amount</th>
-            <th>Risk</th>
-            <th>Usual Device</th>
+            <th>Fraud <span>Probability</span></th>
+            <th>Usual <span>Device</span></th>
           </tr>
         </thead>
 
@@ -93,20 +92,18 @@ function TransactionsTable({ transactions, transactionsPage, onPrev, onNext }) {
             <tr key={transaction.id_transaccion}
                 onClick={() => navigate(`/transactions/${transaction.id_transaccion}`)}
                 className={styles.clickableRow} >
-              <td>{transaction.id_transaccion}</td>
-              {/*<td>{ {new Date(transaction.date).toLocaleString(
+              <td>{new Date(transaction.fecha_hora).toLocaleString(
                 "es-ES", {
                     day: "2-digit", 
                     month: "2-digit", 
                     hour: "2-digit",
                     minute: "2-digit"
                 }
-              )} }</td>*/}
-              <td>{transaction.cuenta_origen}</td>
-              <td>{transaction.cuenta_destino}</td>
+              )} </td>
+              <td className={transaction.cuenta_origen.substring(0,2) === transaction.operacion_pais ? styles.lowRisk : styles.highRisk}>{`${transaction.cuenta_origen.substring(0,2)} → ${transaction.operacion_pais}`}</td>
               <td className={transaction.destino_alto_riesgo ? styles.highRisk
                             : styles.lowRisk
-              }>{transaction.destino_alto_riesgo ? "High Risk" : "Low Risk"}</td>
+              }>{transaction.destino_alto_riesgo ? "High" : "Low"}</td>
               <td>{transaction.importe_transaccion} €</td>
               <td
                 className={ transaction.riskScore < 25 ? styles.lowRisk
