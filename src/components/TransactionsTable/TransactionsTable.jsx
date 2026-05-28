@@ -82,7 +82,7 @@ function TransactionsTable({ transactions, transactionsPage, onPrev, onNext }) {
             <th>Customer → Transaction<span>(country)</span></th>
             <th>Destination <span>Risk</span></th>
             <th>Amount</th>
-            <th>Risk</th>
+            <th>Fraud <span>Probability</span></th>
             <th>Usual <span>Device</span></th>
           </tr>
         </thead>
