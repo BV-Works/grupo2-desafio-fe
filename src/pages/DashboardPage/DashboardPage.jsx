@@ -1,107 +1,100 @@
+// Carga clientes de alto riesgo. Carga transacciones de alto riesgo. Carga transacciones para calcular métricas/gráficas
+
 import { useState, useEffect } from "react"; 
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import TransactionsTable from "../../components/TransactionsTable/TransactionsTable";
 import ClientsTable from "../../components/ClientsTable/ClientsTable";
-import BooleanBarChart from "../../components/BooleanBarChart/BooleanBarChart";
-import BooleanDonutChart from "../../components/BooleanDonutChart/BooleanDonutChart";
-import transactions from "../../data/mockTransactions.json";
+import FraudMetrics from "../../components/FraudMetrics/FraudMetrics";
 import { getHighRiskClients } from "../../services/client.service";
-import { getHighRiskTransactions } from "../../services/transactions.service"; 
-import transaccionesMock from "../../data/transaccionesMock.json";
+import { getHighRiskTransactions, getTransactions } from "../../services/transactions.service"; // getHighRiskTransactions -> Para la tabla de transacciones. getTransactions -> Para traer transacciones más genéricas, en este caso para métricas
 
-import styles from "./DashboardPage.module.css"
+import styles from "./DashboardPage.module.css";
 
 export default function DashboardPage() {
+    const [clients, setClients] = useState([]); 
+    const [clientsPage, setClientsPage] = useState(1); 
+    const [clientsLoading, setClientsLoading] = useState(false); 
+    const [clientsError, setClientsError] = useState(""); 
 
-    // Clients API fetch::
-    const [ clients, setClients ] = useState([]); 
-    const [ clientsPage, setClientsPage ] = useState(1); 
-    const [ clientsTotal, setClientsTotal ] = useState(null); 
-    const [ clientsLoading, setClientsLoading ] = useState(false); 
-    const [ clientsError, setClientsError ] = useState(""); 
+    const [transactions, setTransactions] = useState([]); 
+    const [transactionsPage, setTransactionsPage] = useState(1); 
+    const [transactionsLoading, setTransactionsLoading] = useState(false); 
+    const [transactionsError, setTransactionsError] = useState(""); 
 
-    useEffect (() => {
+    const [metricTransactions, setMetricTransactions] = useState([]); // Guarda las transacciones que se usarán para las gráficas (La tabla trae 10 por página)
+    const [metricsLoading, setMetricsLoading] = useState(false); // Indica si las métricas están cargando
+    const [metricsError, setMetricsError] = useState(""); // Guarda errores al cargar las métricas
+
+    useEffect(() => {
         async function fetchClients() {
             try {
                 setClientsLoading(true); 
                 setClientsError(""); 
 
-                const res = await getHighRiskClients( clientsPage, 10 ); 
+                const res = await getHighRiskClients(clientsPage, 10); 
 
                 setClients(res.data); 
-                setClientsTotal(res.total); 
             } catch (err) {
                 setClientsError(err.message); 
-
             } finally {
                 setClientsLoading(false); 
             }
         }
+
         fetchClients(); 
+    }, [clientsPage]); 
 
-    }, [ clientsPage ]) 
-
-    // Transactions API fetch
-
-    const [ transactions, setTransactions ] = useState([]); 
-    const [ transactionsPage, setTransactionsPage ] = useState(1); 
-    const [ transactionsTotal, setTransactionsTotal ] = useState(0); 
-    const [ transactionsLoading, setTransactionsLoading ] = useState(false); 
-    const [ transactionsError, setTransactionsError ] = useState(""); 
-
-
-    useEffect (() => {
+    useEffect(() => {
         const fetchTransactions = async () => {
             try {
                 setTransactionsLoading(true); 
                 setTransactionsError(""); 
 
-                const res = await getHighRiskTransactions(transactionsPage, 10); 
+                const res = await getHighRiskTransactions(transactionsPage, 10); // Eso rellena la tabla de transacciones
 
                 setTransactions(res.data); 
-                setTransactionsTotal(res.total); 
             } catch (err) {
-                console.error(err)
+                console.error(err);
                 setTransactionsError(err.message); 
-
             } finally {
                 setTransactionsLoading(false); 
             }
-        }
+        };
+
         fetchTransactions(); 
-    }, [ transactionsPage ]); 
+    }, [transactionsPage]); 
 
-/*     const handleClientFilterChange = (event) => {
-        const { name, value } = event.target; 
+    useEffect(() => {
+        const fetchMetricTransactions = async () => {
+            try {
+                setMetricsLoading(true);
+                setMetricsError("");
+                // Eso trae las transacciones de alto riesgo para calcular las cards
+                const res = await getTransactions({
+                    page: 1,
+                    limit: 1000,
+                    riskLevel: "",
+                    target_final: false,
+                    sort: "",
+                });
 
-        setClientsPage(1); 
+                setMetricTransactions(res?.data ?? []); // Guarda las transacciones de métricas -> Si res.data es null o undefined, usa un array vacío. Evita que la app rompa
+            } catch (err) {
+                console.error(err);
+                setMetricsError(err.message);
+            } finally {
+                setMetricsLoading(false); // Desactiva loading
+            }
+        };
 
-        setClientFilters((prevFilters) => ({
-            ...prevFilters, 
-            [name]: value, 
-        })); 
-    };  */
-
-    const nightTransactions = transaccionesMock.filter(transaction => transaction.is_night).length;
-    const dayTransactions = transaccionesMock.filter(transaction => !transaction.is_night).length;
-
-    const weekendTransactions = transaccionesMock.filter(transaction => transaction.is_weekend).length;
-    const weekdayTransactions = transaccionesMock.filter(transaction => !transaction.is_weekend).length;
-
-    const nightChartData = [
-        { label: "Noche", value: nightTransactions },
-        { label: "Día", value: dayTransactions }
-    ];
-
-    const weekendChartData = [
-        { label: "Fin de semana", value: weekendTransactions },
-        { label: "Entre semana", value: weekdayTransactions }
-    ];
+        fetchMetricTransactions();
+    }, []);
 
     return (
         <MainLayout>
             <main className={styles.DashboardPage}>
                 <h1>Dashboard</h1>
+
                 <section id="tables">
                     <div className={styles.tablesWrapper}>
                         <TransactionsTable transactions={transactions}
@@ -112,31 +105,27 @@ export default function DashboardPage() {
 
                         {clientsLoading && <p>Loading clients...</p>}
                         {clientsError && <p>{clientsError}</p>}
+                        {transactionsLoading && <p>Loading transactions...</p>}
+                        {transactionsError && <p>{transactionsError}</p>}
 
-                        <ClientsTable clients={clients}
-                                        clientsPage={clientsPage}
-                                        onPrev={() => setClientsPage((page) => page - 1)}
-                                        onNext={() => setClientsPage((page) => page + 1)} />
-
+                        <ClientsTable
+                            clients={clients}
+                            clientsPage={clientsPage}
+                            onPrev={() => setClientsPage((page) => page - 1)}
+                            onNext={() => setClientsPage((page) => page + 1)}
+                        />
                     </div>
                 </section>
 
                 <section id="metrics">
                     <h2>Metrics</h2>
-                    <div className={styles.chartsWrapper}>
-                        <BooleanBarChart
-                            title="Transacciones por horario"
-                            data={nightChartData}
-                        />
-
-                        <BooleanDonutChart
-                            title="Transacciones por día"
-                            data={weekendChartData}
-                        />
-                    </div>
+                    <FraudMetrics
+                        transactions={metricTransactions} // pasa las transacciones usadas para calcular las gráficas
+                        isLoading={metricsLoading}
+                        error={metricsError}
+                    />
                 </section>
-                
             </main>
         </MainLayout>
-    )
+    );
 }
