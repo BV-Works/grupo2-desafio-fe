@@ -97,12 +97,11 @@ export default function DashboardPage() {
 
                 <section id="tables">
                     <div className={styles.tablesWrapper}>
-                        <TransactionsTable
-                            transactions={transactions}
-                            transactionsPage={transactionsPage}
-                            onPrev={() => setTransactionsPage((page) => page - 1)}
-                            onNext={() => setTransactionsPage((page) => page + 1)}
-                        />
+                        <TransactionsTable transactions={transactions}
+                                            transactionsPage={ transactionsPage }
+                                            onPrev={() => setTransactionsPage((page) => page - 1)}
+                                            onNext={() => setTransactionsPage((page) => page + 1)} />
+
 
                         {clientsLoading && <p>Loading clients...</p>}
                         {clientsError && <p>{clientsError}</p>}

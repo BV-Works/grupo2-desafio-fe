@@ -1,0 +1,18 @@
+.card {
+
+    & .lowRisk {
+      color: var(--color-status-success);
+  
+    }
+    & .mediumRisk {
+      color: var(--color-status-warning);
+    }
+    & .highRisk {
+      color: var(--color-status-critical);
+  
+    }
+
+    & h2 {
+        margin: var(--space-md);
+    }
+  }

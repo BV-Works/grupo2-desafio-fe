@@ -21,3 +21,8 @@ export async function getTransactionById(id) {
     const response = await apiClient.get(`/transactions/${id}`); 
     return response.data; 
 }; 
+
+export const updateTransactionDecision = async (id, payload) => {
+    const response = await apiClient.put(`/transactions/${id}`, payload);
+    return response.data;
+};
