@@ -81,7 +81,7 @@ Backend Repository:
 https://github.com/BV-Works/grupo2-desafio-be
 
 Data Science Repository:
-[Pending repository link]
+https://github.com/CPasData/NovaPay_ML
 
 Features
 Authentication & Security
