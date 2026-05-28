@@ -72,13 +72,13 @@ export default function DashboardPage() {
                 // Eso trae las transacciones de alto riesgo para calcular las cards
                 const res = await getTransactions({
                     page: 1,
-                    limit: 2000,
-                    riskLevel: "high",
+                    limit: 1000,
+                    riskLevel: "",
                     target_final: false,
-                    sort: "prob_fraud_desc",
+                    sort: "",
                 });
 
-                setMetricTransactions(res.data ?? []); // Guarda las transacciones de métricas -> Si res.data es null o undefined, usa un array vacío. Evita que la app rompa
+                setMetricTransactions(res?.data ?? []); // Guarda las transacciones de métricas -> Si res.data es null o undefined, usa un array vacío. Evita que la app rompa
             } catch (err) {
                 console.error(err);
                 setMetricsError(err.message);
