@@ -1,264 +1,250 @@
-# grupo2-desafio-fe
+# Sentinel — Fraud Detection Dashboard
 
-# NovaPay Fraud Dashboard
+Sentinel is a fraud detection dashboard designed to help financial analysts distinguish malicious banking transactions from false positives through risk analysis, prediction data, and analyst review workflows.
 
-Frontend side of the application for the **NovaPay Fraud Detection System**, developed as part of the *Desafío de Tripulaciones* challenge at TheBridge. 
-
-The platform simulates an internal analyst tool used to review suspicious financial transactions generated and classified by the Data Science and Cybersecurity teams.
+This project was developed as a collaborative Full Stack + Data Science + Cybersecurity challenge for **The Bridge Bootcamp**.
 
 ---
 
 # Project Overview
 
-NovaPay is a fictional fintech company experiencing increasing fraud activity.
-
-This frontend application allows fraud analysts to:
+Sentinel simulates an internal banking security platform where analysts can:
 
 - Review suspicious transactions
-- Inspect transaction details
-- Analyze client information
-- Confirm fraud cases
-- Mark false positives
-- Visualize fraud-related metrics and tables
+- Analyze client and transaction metadata
+- Visualize fraud prediction results
+- Confirm or reject fraud alerts
+- Update transaction review states in real time
 
-The project is built following an MVP-first approach under tight delivery constraints and cross-team collaboration.
+The platform integrates:
+
+- a React frontend,
+- an Express REST API,
+- a PostgreSQL database,
+- and a machine learning fraud prediction pipeline.
 
 ---
 
-# Current Features
+# Screenshots
 
-## Authentication Flow
+## Login Page
 
-- Login page with separate `AuthLayout`
-- Global authentication state using React Context API
-- Protected dashboard structure
-- Logout functionality
+![Login Preview](./docs/screenshots/login-preview.png)
 
 ---
 
 ## Dashboard
 
-### Transactions Table
-- Pending suspicious transactions
-- Risk score visualization
-- Responsive table layout
-- Clickable transaction rows
-- Risk-based color system
-
-### Clients Table
-- Client overview data
-- Responsive table layout
+![Dashboard Preview](./docs/screenshots/dashboard-preview.png)
 
 ---
 
-## Transaction Detail Page
+## Transaction Detail
 
-- Transaction detail card
-- Client detail card
-- Analyst decision workflow
-- Confirmation modal system
-
-### Available Actions
-- Confirm Fraud
-- Allow Transaction / False Positive
+![Transaction Detail Preview](./docs/screenshots/transaction-preview.png)
 
 ---
 
-## UI / UX Features
-
-- Responsive dashboard layout using CSS Grid
-- Reusable `TableShell` component
-- CSS Modules architecture
-- Shared design tokens using CSS variables
-- Responsive mobile stacking behavior
-- Transaction row hover interactions
-- Modal overlay system
-
----
-
-# Tech Stack
-
-## Frontend
-- React
-- React Router DOM
-- Vite
-- CSS Modules
-
-## State Management
-- React Context API
-
-## Styling
-- CSS Modules
-- CSS Variables (Design Tokens)
-
----
-
-# Project Structure
+# Architecture Overview
 
 ```txt
+React Frontend
+        ↓
+Express REST API
+        ↓
+PostgreSQL Database
+        ↓
+Fraud Prediction / ML Layer
+
+The frontend consumes fraud analysis data generated and processed collaboratively by the Backend, Data Science, and Cybersecurity teams.
+
+Frontend Tech Stack
+React
+React Router DOM
+Vite
+Axios
+CSS Modules
+Motion
+D3
+Recharts
+Bootstrap Icons
+Backend Stack
+Node.js
+Express
+Sequelize
+PostgreSQL
+JWT Authentication
+HTTP-only Cookies
+Docker
+
+Backend Repository:
+https://github.com/BV-Works/grupo2-desafio-be
+
+Data Science Repository:
+[Pending repository link]
+
+Features
+Authentication & Security
+JWT authentication
+HTTP-only cookie session handling
+Protected routes
+Persistent user session validation
+Secure API communication
+Dashboard
+Transactions Table
+Paginated transaction visualization
+High-risk transaction filtering
+Risk-level visualization
+Responsive overflow handling
+Clickable transaction rows
+Clients Table
+Paginated client overview
+High-risk client visualization
+Responsive table layout
+Transaction Detail View
+Detailed transaction metadata
+Prediction/risk analysis visualization
+Client information panel
+Analyst review workflow
+Fraud confirmation / false positive decisions
+Analyst Decision System
+
+Analysts can:
+
+Confirm fraudulent activity
+Mark false positives
+Update transaction review state through API PUT requests
+Frontend Architecture
+
+The frontend follows a component-based architecture with clear separation of concerns.
+
+Main Architectural Decisions
+Services Layer
+
+API communication is abstracted through reusable service modules:
+
+services/
+├── auth.service.js
+├── clients.service.js
+└── transactions.service.js
+
+This keeps:
+
+API logic separated from UI components
+components cleaner and easier to maintain
+backend changes isolated
+Authentication Context
+
+Global authentication state is handled through React Context API.
+
+AuthProvider
+↓
+useAuth()
+↓
+Protected Routes / Components
+
+This centralizes:
+
+login
+logout
+user session handling
+authenticated state
+Reusable UI Components
+
+The application progressively evolved toward reusable UI primitives and layout abstractions:
+
+components/
+├── TableShell
+├── CardShell
+├── DecisionModal
+├── DecisionCard
+├── TransactionCard
+└── ClientCard
+CSS Architecture
+
+Styling uses:
+
+CSS Modules
+shared design tokens
+reusable spacing/shadow/radius systems
+responsive layout strategies
+Responsive Design
+
+The application was designed with responsive dashboard behavior in mind.
+
+Current responsive features:
+
+adaptive dashboard grid
+stacked mobile layouts
+scrollable table containers
+responsive cards and modals
+Deployment
+Layer	Platform
+Frontend	Netlify
+Backend	Render
+Database	Render
+Environment Variables
+
+Create a .env file in the project root:
+
+VITE_API_URL=your_backend_api_url
+Installation
+Clone repository
+git clone https://github.com/BV-Works/grupo2-desafio-fe.git
+Install dependencies
+npm install
+Start development server
+npm run dev
+Project Structure
 src/
-│
 ├── api/
-├── assets/
 ├── components/
-│   ├── ClientCard/
-│   ├── ClientsTable/
-│   ├── DecisionModal/
-│   ├── Footer/
-│   ├── Header/
-│   ├── TableShell/
-│   ├── TransactionCard/
-│   └── TransactionsTable/
-│
 ├── context/
-│   ├── authContext.jsx
-│   ├── AuthProvider.jsx
-│   └── useAuth.jsx
-│
-├── data/
-│   ├── mockClients.json
-│   └── mockTransactions.json
-│
 ├── layouts/
-│   ├── AuthLayout/
-│   └── MainLayout/
-│
 ├── pages/
-│   ├── DashboardPage/
-│   ├── LoginPage/
-│   └── TransactionDetailPage/
-│
 ├── routes/
+├── services/
 ├── styles/
 ├── utils/
-│
-├── App.jsx
-├── main.jsx
-└── index.css
-```
+└── data/
+Team
+Full Stack Team
+Pablo Vecilla
+https://github.com/PabloVecilla
+Mario Sánchez
+https://github.com/MarioMS2000
+BV Works
+https://github.com/BV-Works
+Future Improvements
+UX Improvements
+Better mobile usability
+Improved table overflow handling
+Loading spinners and skeleton states
+Enhanced spacing and visual hierarchy
+Clean Code & Architecture
+Further componentization
+Shared Button component system
+Reusable form abstractions
+Success/feedback modal abstraction
+Additional reusable UI primitives
+Product Improvements
+Advanced filtering
+Transaction search
+Analytics dashboard
+Real-time monitoring
+Audit logging
+Expanded fraud visualization tools
+Learning Objectives
 
----
+This project focused heavily on:
 
-# Routing
+collaborative software development
+frontend/backend integration
+secure authentication flows
+API-driven UI architecture
+reusable React component design
+responsive dashboard development
+real-world teamwork workflows
+License
 
-```txt
-/                     → Login Page
-/dashboard            → Main Dashboard
-/transactions/:id     → Transaction Detail Page
-```
-
----
-
-# Design System
-
-The project uses centralized CSS variables for:
-
-- Colors
-- Shadows
-- Border radius
-- Spacing system
-
-Example:
-
-```css
-:root {
-  --color-bg-main: #f8fafc;
-  --color-bg-surface: #eef2f7;
-  --color-bg-card: #f9fbfd;
-
-  --color-status-critical: #dc2626;
-  --color-status-warning: #d97706;
-  --color-status-success: #16a34a;
-
-  --radius-md: 8px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-}
-```
-
----
-
-# Responsive Strategy
-
-Desktop:
-- Dashboard grid layout (`2fr / 1fr`)
-
-Mobile:
-- Tables stack vertically
-- Horizontal table scrolling enabled
-- Action buttons stack vertically
-- Cards become single-column
-
----
-
-# Mock Data
-
-Current development uses local JSON mock data:
-
-- `mockTransactions.json`
-- `mockClients.json`
-
-This allows frontend development to progress independently while backend and database integration are still in progress.
-
----
-
-# Planned Features
-
-- Real backend API integration
-- JWT authentication
-- Analyst session persistence
-- Transaction filtering and search
-- Charts and fraud metrics visualization
-- Transaction decision persistence
-- Role-based access
-- Pagination
-- Real database integration
-- Dockerized backend services
-
----
-
-# Team Workflow
-
-The project is developed collaboratively across:
-
-- Full Stack
-- Data Science
-- Cybersecurity
-
-Frontend currently progresses in parallel using mocked data while:
-- Data Science defines datasets and fraud models
-- Backend/database models are finalized
-- Dockerized infrastructure is prepared
-
----
-
-# Running the Project
-
-## Install dependencies
-
-```bash
-npm install
-```
-
-## Start development server
-
-```bash
-npm run dev
-```
-
----
-
-# Development Philosophy
-
-This project follows:
-- MVP-first development
-- Component-based architecture
-- Separation of concerns
-- Responsive-first design
-- Reusable UI patterns
-- Clean dashboard UX principles
-
----
-
-# Author
-
-Developed as part of the *Desafío de Tripulaciones* Full Stack team.
+Educational project developed for The Bridge Bootcamp.

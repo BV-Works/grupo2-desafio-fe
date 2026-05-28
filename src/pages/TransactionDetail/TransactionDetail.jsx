@@ -85,12 +85,12 @@ function TransactionDetailPage() {
         {decision && (
           <div className={styles.successModalOverlay}>
             <div className={styles.successModalContent}>
-              <h2>¡Decisión guardada con éxito!</h2>
+              <h2>¡Decision stored successfully!</h2>
               <p>
-                La transacción ha sido marcada como: <strong>{decision.action === "confirmed_fraud" ? "Fraude Confirmado" : "Falso Positivo"}</strong>
+                Transaction marked as: <strong>{decision.action === "confirmed_fraud" ? "Confirmed Fraud" : "False Positivo"}</strong>
               </p>
               <button 
-                onClick={() => navigate('/dashboard')} // Ajusta la ruta de tu dashboard si es diferente
+                onClick={() => navigate('/dashboard')}
                 className={styles.dashboardBtn}
               >
                 Back to Dashboard
